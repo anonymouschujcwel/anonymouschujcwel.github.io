@@ -50,12 +50,14 @@ imageInput.addEventListener("change", (event) => {
   var data = new FormData();
   data.append("image", file);
 
-fetch("https://api.imgur.com/3/image", {
+fetch("https://api.cloudinary.com/v1_1/dn6oybybz/image/upload", {
     method: "POST",
-    headers: {
-      Authorization: "Client-ID e4d98a899c8c946",
-    },
-    body: data,
+    body: (() => {
+      var cloudData = new FormData();
+      cloudData.append("file", file);
+      cloudData.append("upload_preset", "dqtwitni");
+      return cloudData;
+    })(),
   })
     .then((result) => {
       if (!result.ok) {
@@ -64,10 +66,7 @@ fetch("https://api.imgur.com/3/image", {
       return result.json();
     })
     .then((response) => {
-      if (!response.success) {
-        throw new Error("Imgur error: " + response.data?.error);
-      }
-      var url = response.data.link;
+      var url = response.secure_url;
       upload.classList.remove("error_shown");
       upload.setAttribute("selected", url);
       upload.classList.add("upload_loaded");
