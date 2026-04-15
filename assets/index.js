@@ -55,7 +55,7 @@ fetch("https://api.imgur.com/3/image", {
     headers: {
       Authorization: "Client-ID e4d98a899c8c946",
     },
-    body: data,=
+    body: data,
   })
     .then((result) => {
       if (!result.ok) {
