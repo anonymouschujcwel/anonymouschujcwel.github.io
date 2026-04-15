@@ -50,21 +50,35 @@ imageInput.addEventListener("change", (event) => {
   var data = new FormData();
   data.append("image", file);
 
-  fetch("https://api.imgur.com/3/image", {
+fetch("https://api.imgur.com/3/image", {
     method: "POST",
     headers: {
       Authorization: "Client-ID e4d98a899c8c946",
     },
-    body: data,
+    body: data,=
   })
-    .then((result) => result.json())
+    .then((result) => {
+      if (!result.ok) {
+        throw new Error("Błąd sieci: " + result.status);
+      }
+      return result.json();
+    })
     .then((response) => {
+      if (!response.success) {
+        throw new Error("Imgur error: " + response.data?.error);
+      }
       var url = response.data.link;
       upload.classList.remove("error_shown");
       upload.setAttribute("selected", url);
       upload.classList.add("upload_loaded");
       upload.classList.remove("upload_loading");
       upload.querySelector(".upload_uploaded").src = url;
+    })
+    .catch((error) => {
+      console.error("Upload failed:", error);
+      upload.classList.remove("upload_loading");
+      upload.classList.add("error_shown");
+      upload.removeAttribute("selected");
     });
 });
 
