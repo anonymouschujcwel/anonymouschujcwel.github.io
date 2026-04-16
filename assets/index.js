@@ -55,7 +55,11 @@ fetch("https://api.cloudinary.com/v1_1/dn6oybybz/image/upload", {
     body: (() => {
       var cloudData = new FormData();
       cloudData.append("file", file);
+<<<<<<< HEAD
       cloudData.append("upload_preset", "ml_default");
+=======
+      cloudData.append("upload_preset", "dqtwitni");
+>>>>>>> 8525af7bfc033890d47b7ab75106e53238ab946f
       return cloudData;
     })(),
   })
