@@ -8,6 +8,10 @@ if (date.getHours() >= 18) {
 }
 document.querySelector(".welcome").innerHTML = welcome;
 
+document.querySelector(".login").addEventListener("click", () => {
+  toHome();
+});
+
 function toHome() {
   location.href = "/szybkiinwalida/home.html?" + params;
 }
@@ -46,10 +50,6 @@ input.addEventListener("input", () => {
     });
     console.log(original);
   }
-});
-
-document.querySelector(".login").addEventListener("click", () => {
-  toHome();
 });
 
 function delay(time, length) {
