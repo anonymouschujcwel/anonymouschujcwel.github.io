@@ -25,7 +25,7 @@ if (date.getHours() >= 18) {
 document.querySelector(".welcome").innerHTML = welcome;
 
 function toHome() {
-  location.href = "/home.html?" + params;
+  location.href = "/szybkiinwalida/home.html?" + params;
 }
 
 var input = document.querySelector(".password_input");
