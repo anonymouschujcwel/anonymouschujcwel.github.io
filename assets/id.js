@@ -1,5 +1,17 @@
 var params = new URLSearchParams(window.location.search);
 
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyC1rgHsmaeZ8TnZso9zykjDMCVzGuI3y58",
+  authDomain: "szybkiinwalida-a85c6.firebaseapp.com",
+  projectId: "szybkiinwalida-a85c6",
+};
+
+const auth = getAuth(initializeApp(firebaseConfig));
+
+
 document.querySelector(".login").addEventListener("click", () => {
   toHome();
 });

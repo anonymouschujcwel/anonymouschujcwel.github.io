@@ -19,6 +19,24 @@
   />
   <meta name="mobile-web-app-capable" content="yes" />
 </head>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+  import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyC1rgHsmaeZ8TnZso9zykjDMCVzGuI3y58",
+    authDomain: "szybkiinwalida-a85c6.firebaseapp.com",
+    projectId: "szybkiinwalida-a85c6",
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  window.firebaseAuth = auth;
+  window.firebaseSignIn = signInWithEmailAndPassword;
+</script>
+
 <body>
   <div class="background"></div>
   <div class="container">
@@ -53,6 +71,7 @@
       </div>
     </div>
   </div>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
   <script src="assets/id.js"></script>
   <script src="assets/manifest.js"></script>
   <script src="assets/cache.js"></script>
