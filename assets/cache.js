@@ -17,9 +17,9 @@ window.onload = async () => {
     "show",
   ];
 
-  pages.forEach((page) => {
-    files.push("/" + page + "?" + params);
-  });
+pages.forEach((page) => {
+    files.push("/szybkiinwalida/" + page + ".html?" + params);
+    });
 
   files.push(params.get("image"));
 
