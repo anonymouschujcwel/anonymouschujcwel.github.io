@@ -44,9 +44,7 @@ unfold.addEventListener("click", () => {
 
 var params = new URLSearchParams(window.location.search);
 
-function sendTo(page, param1, param2) {
-    location.href = '/szybkiinwalida/' + page + '.html?' + params;
-}
+
 
 function loadReadyData(result) {
   Object.keys(result).forEach((key) => {
