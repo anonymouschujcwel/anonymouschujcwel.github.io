@@ -1,9 +1,5 @@
 var params = new URLSearchParams(window.location.search);
 
-document.querySelector(".login").addEventListener("click", () => {
-  toHome();
-});
-
 var welcome = "Dzień dobry!";
 
 var date = new Date();
@@ -50,6 +46,10 @@ input.addEventListener("input", () => {
     });
     console.log(original);
   }
+});
+
+document.querySelector(".login").addEventListener("click", () => {
+  toHome();
 });
 
 function delay(time, length) {
