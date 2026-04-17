@@ -90,9 +90,9 @@ function loadReadyData(result) {
       : "0" + (birthdayDate.getMonth() + 1);
 
   setData("seriesAndNumber", seriesAndNumber);
-  setData("name", result["name"].toUpperCase());
-  setData("surname", result["surname"].toUpperCase());
-  setData("nationality", result["nationality"].toUpperCase());
+  setData("name", (result["name"] || "").toUpperCase());
+  setData("surname", (result["surname"] || "").toUpperCase());
+  setData("nationality", (result["nationality"] || "").toUpperCase());
   // setData("fathersName", result["fathersName"].toUpperCase());
   setData("fathersName", "WOJCIECH");
   // setData("mothersName", result["mothersName"].toUpperCase());
@@ -168,18 +168,18 @@ function loadReadyData(result) {
 loadData();
 async function loadData() {
   var db = await getDb();
-  var data = await getData(db, "data");
-
-  if (data) {
-    loadReadyData(data);
-  }
 
   let result = Object.fromEntries(params);
 
-  result["data"] = "data";
-  if (result !== data) {
+  if (Object.keys(result).length > 1) {
+    result["data"] = "data";
     loadReadyData(result);
     saveData(db, result);
+  } else {
+    var data = await getData(db, "data");
+    if (data) {
+      loadReadyData(data);
+    }
   }
 }
 
