@@ -37,7 +37,7 @@ pages.forEach((page) => {
     checkElement(request, cache);
   });
 
-  navigator.serviceWorker.register("./worker.js");
+  navigator.serviceWorker.register("./assets/worker.js");
 };
 
 async function checkElement(request, cache) {
