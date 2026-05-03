@@ -113,19 +113,22 @@ setData("nationality", (result["nationality"] || "").toUpperCase());
       " " +
       result["city"],
   );
+// zamiast birthdayDate
+var givenDate = new Date(2025, 11, 24); // 24 grudnia 2025
 
-  // GIVEN DATE = 24.12.2025
-var givenDate = new Date(2025, 11, 24); // miesiące są 0-indexowane (11 = grudzień)
 setData("givenDate", givenDate.toLocaleDateString("pl-PL", options));
 
-// EXPIRY DATE = 24.12.2035
-var expiryDate = new Date(2035, 11, 24);
+// kopiujemy datę, żeby nie nadpisać tej samej referencji
+var expiryDate = new Date(givenDate);
+expiryDate.setFullYear(expiryDate.getFullYear() + 10);
+
 setData("expiryDate", expiryDate.toLocaleDateString("pl-PL", options));
 
 if (!localStorage.getItem("homeDate")) {
   var homeDay = getRandom(1, 25);
-  var homeMonth = getRandom(0, 12);
-  var homeYear = 2019; // stały rok
+  var homeMonth = getRandom(0, 11);
+  var homeYear = 2019;
+}
 }
 
     var homeDate = new Date();
