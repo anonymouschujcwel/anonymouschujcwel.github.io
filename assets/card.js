@@ -94,9 +94,9 @@ function loadReadyData(result) {
 setData("surname", (result["surname"] || "").toUpperCase());
 setData("nationality", (result["nationality"] || "").toUpperCase());
   // setData("fathersName", result["fathersName"].toUpperCase());
-  setData("fathersName", "WOJCIECH");
+  setData("fathersName", "TOMASZ");
   // setData("mothersName", result["mothersName"].toUpperCase());
-  setData("mothersName", "AGATA");
+  setData("mothersName", "JULIA");
   setData("birthday", day + "." + month + "." + birthdayDate.getFullYear());
   setData("familyName", result["familyName"]);
   setData("sex", textSex);
@@ -114,18 +114,19 @@ setData("nationality", (result["nationality"] || "").toUpperCase());
       result["city"],
   );
 
-  var givenDate = birthdayDate;
-  givenDate.setFullYear(givenDate.getFullYear() + 18);
-  setData("givenDate", givenDate.toLocaleDateString("pl-PL", options));
+  // GIVEN DATE = 24.12.2025
+var givenDate = new Date(2025, 11, 24); // miesiące są 0-indexowane (11 = grudzień)
+setData("givenDate", givenDate.toLocaleDateString("pl-PL", options));
 
-  var expiryDate = givenDate;
-  expiryDate.setFullYear(expiryDate.getFullYear() + 10);
-  setData("expiryDate", expiryDate.toLocaleDateString("pl-PL", options));
+// EXPIRY DATE = 24.12.2035
+var expiryDate = new Date(2035, 11, 24);
+setData("expiryDate", expiryDate.toLocaleDateString("pl-PL", options));
 
-  if (!localStorage.getItem("homeDate")) {
-    var homeDay = getRandom(1, 25);
-    var homeMonth = getRandom(0, 12);
-    var homeYear = getRandom(2012, 2019);
+if (!localStorage.getItem("homeDate")) {
+  var homeDay = getRandom(1, 25);
+  var homeMonth = getRandom(0, 12);
+  var homeYear = 2019; // stały rok
+}
 
     var homeDate = new Date();
     homeDate.setDate(homeDay);
