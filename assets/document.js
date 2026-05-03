@@ -4,7 +4,7 @@ updateText.innerHTML = localStorage.getItem("update");
 var date = new Date();
 
 if (localStorage.getItem("cardUpdate") == null){
-  localStorage.setItem("cardUpdate", "24.12.2024")
+  localStorage.setItem("cardUpdate", "24.12.2025")
 }
 
 var update = document.querySelector(".update");
